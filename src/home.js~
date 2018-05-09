@@ -1,0 +1,63 @@
+import React from 'react';
+import PropTypes from 'prop-types';
+import {Form, Navbar, Grid, Row, Col, Button} from 'react-bootstrap';
+import {addAsign, removeAsign} from './actionCreators'; 
+import Option from './components/option';
+import TablaAsign from './components/tablaAsign';
+import { connect } from 'react-redux';
+
+const style = {
+    marginTop:"60px"
+};
+const t = {
+    bsStyle:"danger",
+    glyph:"trash",
+}
+
+const Home = props => {
+    return(
+         <div>
+            <Navbar inverse fixedTop>
+                <Navbar.Header>
+                    <Navbar.Brand>
+                        <a href="#">Petróleo</a>
+                    </Navbar.Brand>
+                    <Navbar.Brand>
+                        <a href="#">Sistemas</a>
+                    </Navbar.Brand>
+                </Navbar.Header>
+            </Navbar>
+            <Grid style={style}>
+                <Row>
+                    <Col sm = {6}>
+                       <Option carrera={props.carrera} addAsign = {props.addAsign} />
+                    </Col>
+                    <Col sm = {6}>
+                        <TablaAsign asignaturas={props.cart} removeAsign = {props.removeAsign} />
+                    </Col>
+                </Row>
+				{props.cart.length>2?<Button className="btn btn-success btn-block" >Enviar</Button>:null}
+            </Grid>
+        </div>
+    )
+};
+
+const mapStateToProps = state => {
+    return {
+        carrera: state.carrera ,
+        cart: state.cart
+    }
+};
+
+const mapDispatchToProps = dispatch => {
+    return {
+        removeAsign(product){
+           dispatch(removeAsign(product)); 
+        },
+        addAsign(product){
+            dispatch(addAsign(product)); 
+        }
+    }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

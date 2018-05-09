@@ -1,0 +1,66 @@
+{
+    "carrera":"Petróleo",
+    "semestres":[
+        {
+            "semestre":"semestre 2",
+            "materias":[
+                {"codigo":"0051814", "nombre":"Física I","requisitos":["0081814"]},
+                {"codigo":"0071222", "nombre":"Inglés Instrumental II","requisitos":["0071112"]},
+                {"codigo":"0081824", "nombre":"Matemáticas II","requisitos":["0081814"]},
+                {"codigo":"0101821", "nombre":"Laboratorio I de Química","requisitos":["0101814"]},
+                {"codigo":"0101824", "nombre":"Química II","requisitos":["0101814"]}
+            ]
+        },
+        {
+            "semestre":"semestre 3",
+            "materias":[
+                {"codigo":"0051821", "nombre":"Laboratorio I de Física","requisitos":["0051814"]},
+                {"codigo":"0051824", "nombre":"Física II","requisitos":["0051814"]},
+                {"codigo":"0082814", "nombre":"Matemáticas III","requisitos":["0081824"]},
+                {"codigo":"0082833", "nombre":"Introducción a la Programación","requisitos":["0081824"]},
+                {"codigo":"0632032", "nombre":"Inglés Instrumental III","requisitos":["0071222"]}
+            ]
+        },
+        {
+            "semestre":"semestre 4",
+            "materias":[
+                {"codigo":"0082824", "nombre":"Matemáticas IV","requisitos":["0082814"]},
+                {"codigo":"0632012", "nombre":"Redacción de Informes Técnicos","requisitos":["0632612"]},
+                {"codigo":"0632042", "nombre":"Inglés Instrumental IV","requisitos":["0632032"]},
+                {"codigo":"0632324", "nombre":"Mecánica para Ingenieros","requisitos":["0051824"]},
+                {"codigo":"0632724", "nombre":"Geología General y Laboratorio","requisitos":["0632612","0082824"]}
+            ]
+        },
+        {
+            "semestre":"semestre 5",
+            "materias":[
+                {"codigo":"0083813", "nombre":"Métodos Numéricos para Ingenieros","requisitos":["0082824","0082833"]},
+                {"codigo":"0613553", "nombre":"Mecánica de los Materiales","requisitos":["0632324"]},
+                {"codigo":"0613753", "nombre":"Termodinámica","requisitos":["0082814","0101824"]},
+                {"codigo":"0623314", "nombre":"Estadística para Ingenieros","requisitos":["0082833"]},
+                {"codigo":"0633113", "nombre":"Propiedades de la Roca y de los Fluidos","requisitos":["0082824","0632724"]}
+            ]
+        },
+        {
+            "semestre":"semestre 6",
+            "materias":[
+                {"codigo":"0082824", "nombre":"Matemáticas IV","requisitos":["0082814"]},
+                {"codigo":"0632012", "nombre":"Redacción de Informes Técnicos","requisitos":["0632612"]},
+                {"codigo":"0632042", "nombre":"Inglés Instrumental IV","requisitos":["0632032"]},
+                {"codigo":"0632324", "nombre":"Mecánica para Ingenieros","requisitos":["0051824"]},
+                {"codigo":"0632724", "nombre":"Geología General y Laboratorio","requisitos":["0632612","0082824"]}
+            ]
+        },
+        {
+            "semestre":"semestre 7",
+            "materias":[
+                {"codigo":"0082824", "nombre":"Matemáticas IV","requisitos":["0082814"]},
+                {"codigo":"0632012", "nombre":"Redacción de Informes Técnicos","requisitos":["0632612"]},
+                {"codigo":"0632042", "nombre":"Inglés Instrumental IV","requisitos":["0632032"]},
+                {"codigo":"0632324", "nombre":"Mecánica para Ingenieros","requisitos":["0051824"]},
+                {"codigo":"0632724", "nombre":"Geología General y Laboratorio","requisitos":["0632612","0082824"]}
+            ]
+        }
+        
+    ]
+}

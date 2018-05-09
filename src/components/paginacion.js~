@@ -1,0 +1,20 @@
+import Li from "./li";
+const Paginacion = props =>{
+	return(
+		<div>
+			<ul className="pagination" style={{cursor:'pointer'}>
+				{props.pg>0?<Li key='back' id='back' name="&laquo;" onClick={props.back.bind(null)} />:null}
+					{[1,2,3,4,5].map((elm) =>{
+						if ((elm*10 + props.pg*50) <= inercia*10){
+							return(
+								<Li clase={props.numb==elm?"active":null} key={elm} id={elm} name={elm + props.pg*5} onClick={props.cambiar.bind(null)} />
+							)
+						}
+					}
+				)}
+				{(props.horarios.length>(props.pg+1)*50)?<Li key='next' name="&raquo;" id='next' onClick={props.next.bind(null)} />:null}
+			</ul>
+		</div>
+	)
+};
+export default Paginacion;

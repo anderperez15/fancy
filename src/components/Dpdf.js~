@@ -1,0 +1,11 @@
+const Dpdf = props =>{
+	return(
+		<div>
+			<span style={{display:"inline-block"}} className="glyphicon glyphicon-download"></span>
+			<p style={{display:"inline-block",cursor:'pointer'}}  onClick={props.onClick.bind(null, props.id)}>
+				Descargar
+			</p>
+		</div>
+	)
+};
+export default Dpdf;

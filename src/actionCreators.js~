@@ -1,0 +1,29 @@
+import { getJSON } from 'jquery';
+import retroCompatibilidad from './funciones/retroCompatibilidad';
+
+const loadAsign = obj => {
+    return dispatch => {
+        getJSON(obj.url, data => dispatch ({"type":obj.type, data:data}))
+    };
+};
+
+const addAsign = product => {
+    let type;
+    if(retroCompatibilidad(action.product, state.cart, state.carrera)){
+        type:null;
+        alert("Verifique el pensum")
+    }
+    return {
+        "type":type,
+        product
+    }
+};
+
+const removeAsign = product => {
+    return {
+        "type":"Remove_Asign",
+        product
+    }
+};
+
+export {addAsign, removeAsign, loadAsign};

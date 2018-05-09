@@ -1,0 +1,7 @@
+const Li = props =>{
+  return(
+    <li className={props.clase} onClick={props.onClick.bind(null, props.id)}>
+      <a>{props.name}</a>
+    </li>
+  )  
+};
