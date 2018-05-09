@@ -2,40 +2,38 @@ import { createStore, applyMiddleware, combineReducers } from 'redux';
 import thunk from 'redux-thunk';
 import { routerReducer } from 'react-router-redux';
 import retroCompatibilidad from './funciones/retroCompatibilidad';
+import newCreatorHorario from './funciones/newCreatorHorario';
+
 const initialstate = {
     cart:[],
+    materias:[],
     carrera:{
         semestres:[]
-    }
+    },
+    resultados:[]
 };
 
 const reducer = (state  = initialstate, action) => {
     switch (action.type){
         case "Add_Asign":
-            if(retroCompatibilidad(action.product, state.cart, state.carrera)){
-                alert ('No se puede añadir esta materia, verifique el pensum');
-                return {
-                    ...state
-                };
-            }
-            if(state.cart.some(asign => asign.requesitos == action.product.codigo)){
-                alert ('usted añadio una materia que tiene como requisito esta');
-                return {
-                    ...state
-                };
-            }
-            if (state.cart.length >= 8){
-                alert('maximo de materias alcanzada');
-                return {
-                    ...state
-                };
-            };
             if (state.cart.some(asign => asign.codigo == action.product.codigo)){
                 alert('esta materia ya fue añadida');
                 return {
                     ...state
                 };
             };
+            if (state.cart.length >= 8){
+                alert('maximo de materias alcanzada');
+                return {
+                    ...state
+                };
+            };
+            if(retroCompatibilidad(action.product, state.cart, state.carrera)){
+                alert ('No se puede añadir esta materia, verifique el pensum');
+                return {
+                    ...state
+                };
+            }
             return {
                 ...state,
                 cart: state.cart.concat(action.product)
@@ -52,7 +50,12 @@ const reducer = (state  = initialstate, action) => {
             return {
                 ...state,
                 carrera: action.data
-            }
+            };
+        case "Materias_a_inscribir":
+            return {
+                ...state,
+                materias: newCreatorHorario(action.data);
+            };
     }
     return state;
 };
