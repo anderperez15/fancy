@@ -1,0 +1,139 @@
+[
+    {
+        "codigo":"0051814",
+        "nombre":"Física I",
+        "opciones":[
+            {
+                "profesor":"AGUILERA, IRAIDA",
+                "seccion":"01",
+                "e_t":[
+                    {"dia":"Lun","he":"07:00","hs":"08:35","aula":"A-03"},
+                    {"dia":"Mie","he":"07:00","hs":"08:35","aula":"A-03"},
+                    {"dia":"Vie","he":"07:00","hs":"08:35","aula":"A-03"}
+                ]
+            },
+            {
+                "profesor":"LUIGI CORONADO, ANTONI",
+                "seccion":"02",
+                "e_t":[
+                    {"dia":"Lun","he":"14:00","hs":"15:35","aula":"A-28"},
+                    {"dia":"Mie","he":"14:00","hs":"15:35","aula":"A-04"},
+                    {"dia":"Vie","he":"14:00","hs":"15:35","aula":"A-30"}
+                ]
+            },
+            {
+                "profesor":"AGUILERA, IRAIDA",
+                "seccion":"03",
+                "e_t":[
+                    {"dia":"Lun","he":"08:40","hs":"10:15","aula":"A-03"},
+                    {"dia":"Mie","he":"08:40","hs":"10:15","aula":"A-03"},
+                    {"dia":"Vie","he":"08:40","hs":"10:15","aula":"A-03"}
+                ]
+            },
+            {
+                "profesor":"NAVARRO BRITO, ARLENYS",
+                "seccion":"04",
+                "e_t":[
+                    {"dia":"Mar","he":"09:30","hs":"11:55","aula":"A-03"},
+                    {"dia":"Jue","he":"09:30","hs":"11:55","aula":"A-03"}
+                ]
+            },
+            {
+                "profesor":"VELASQUEZ, JOSE",
+                "seccion":"05",
+                "e_t":[
+                    {"dia":"Mar","he":"07:00","hs":"09:25","aula":"A-14"},
+                    {"dia":"Jue","he":"07:00","hs":"09:25","aula":"A-14"}
+                ]
+            },
+            {
+                "profesor":"RIOS M., JOSE LUIS",
+                "seccion":"06",
+                "e_t":[
+                    {"dia":"Lun","he":"08:40","hs":"10:15","aula":"A-14"},
+                    {"dia":"Mie","he":"08:40","hs":"10:15","aula":"A-14"},
+                    {"dia":"Vie","he":"08:40","hs":"10:15","aula":"A-13"}
+                ]
+            },
+            {
+                "profesor":"LUIGI CORONADO, ANTONI",
+                "seccion":"07",
+                "e_t":[
+                    {"dia":"Mar","he":"15:40","hs":"18:05","aula":"A-14"},
+                    {"dia":"Jue","he":"15:40","hs":"18:05","aula":"A-17"}
+                    
+                ]
+            }
+        ]
+    },
+    {
+        "codigo":"0071222",
+        "nombre":"Inglés Instrumental II",
+        "opciones":[
+            {
+                "profesor":"MARTINEZ ALCALA, AGUST",
+                "seccion":"01",
+                "e_t":[
+                    {"dia":"Lun","he":"16:30","hs":"18:05","aula":"LI-01"},
+                    {"dia":"Mie","he":"15:40","hs":"18:05","aula":"LI-01"}
+                ]
+            },
+            {
+                "profesor":"MARTINEZ ALCALA, AGUST",
+                "seccion":"02",
+                "e_t":[
+                    {"dia":"Mar","he":"07:00","hs":"08:35","aula":"LI-02"},
+                    {"dia":"Jue","he":"07:00","hs":"09:25","aula":"LI-02"}
+                ]
+            },
+            {
+                "profesor":"REYES CEDEÑO, FERNAND",
+                "seccion":"03",
+                "e_t":[
+                    {"dia":"Mar","he":"16:30","hs":"18:05","aula":"LI-01"},
+                    {"dia":"Jue","he":"15:40","hs":"18:05","aula":"LI-01"}
+                ]
+            },
+            {
+                "profesor":"FLORES RODRIGUEZ, ROXA",
+                "seccion":"04",
+                "e_t":[
+                    {"dia":"Mar","he":"09:30","hs":"11:55","aula":"LI-02"},
+                    {"dia":"Vie","he":"07:00","hs":"08:35","aula":"LI-02"}
+                ]
+            },
+            {
+                "profesor":"RODRIGUEZ MORANDY , A",
+                "seccion":"05",
+                "e_t":[
+                    {"dia":"Mar","he":"08:40","hs":"10:15","aula":"LI-01"},
+                    {"dia":"Jue","he":"09:30","hs":"11:55","aula":"LI-01"}
+                ]
+            }
+        ]
+    },
+    {
+        "codigo":"0081824",
+        "nombre":"Matemáticas II",
+        "opciones":[
+            {
+                "profesor":"SIFONTES GOMEZ, YVONNE",
+                "seccion":"01",
+                "e_t":[
+                    {"dia":"Lun","he":"08:40","hs":"10:15","aula":"A-24"},
+                    {"dia":"Mar","he":"08:40","hs":"10:15","aula":"A-24"},
+                    {"dia":"Jue","he":"08:40","hs":"10:15","aula":"A-24"}
+                ]
+            },
+            {
+                "profesor":"ROMERO RODRIGUEZ, CES",
+                "seccion":"02",
+                "e_t":[
+                    {"dia":"Lun","he":"15:40","hs":"17:15","aula":"A-01"},
+                     {"dia":"Mie","he":"15:40","hs":"17:15","aula":"A-18"},
+                      {"dia":"Jue","he":"15:40","hs":"17:15","aula":"A-01"}
+                ]
+            }
+        ]
+    }
+]

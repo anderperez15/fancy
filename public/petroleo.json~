@@ -1,0 +1,109 @@
+{
+    "carrera":"Petróleo",
+    "semestres":[
+    {
+            "semestre":"semestre 1",
+            "materias":[
+                {"codigo":"0021111", "nombre":"Extraacadémica","requisitos":[]},
+                {"codigo":"0061013", "nombre":"Comprensión y expresión Lingüística I","requisitos":[]},
+                {"codigo":"0071112", "nombre":"Inglés Instrumental I","requisitos":[]},
+                {"codigo":"0081814", "nombre":"Matemáticas I","requisitos":[]},
+                {"codigo":"0091012", "nombre":"Desarrollo de Destrezas para el Aprendizaje","requisitos":[]},
+                {"codigo":"0101814", "nombre":"Química I","requisitos":[]},
+                {"codigo":"0151111", "nombre":"Extraacadémica (Deportiva)","requisitos":[]}
+            ]
+        },
+        {
+            "semestre":"semestre 2",
+            "materias":[
+                {"codigo":"0051814", "nombre":"Física I","requisitos":["0081814"]},
+                {"codigo":"0071222", "nombre":"Inglés Instrumental II","requisitos":["0071112"]},
+                {"codigo":"0081824", "nombre":"Matemáticas II","requisitos":["0081814"]},
+                {"codigo":"0101821", "nombre":"Laboratorio I de Química","requisitos":["0101814"]},
+                {"codigo":"0101824", "nombre":"Química II","requisitos":["0101814"]}
+            ]
+        },
+        {
+            "semestre":"semestre 3",
+            "materias":[
+                {"codigo":"0051821", "nombre":"Laboratorio I de Física","requisitos":["0051814"]},
+                {"codigo":"0051824", "nombre":"Física II","requisitos":["0051814"]},
+                {"codigo":"0082814", "nombre":"Matemáticas III","requisitos":["0081824"]},
+                {"codigo":"0082833", "nombre":"Introducción a la Programación","requisitos":["0081824"]},
+                {"codigo":"0632032", "nombre":"Inglés Instrumental III","requisitos":["0071222"]},
+                {"codigo":"0632612", "nombre":"Introducción a la Ingeniería de Petróleo","requisitos":["0101824"]},
+                {"codigo":"0662812", "nombre":"Dibujo","requisitos":[]}
+            ]
+        },
+        {
+            "semestre":"semestre 4",
+            "materias":[
+                {"codigo":"0082824", "nombre":"Matemáticas IV","requisitos":["0082814"]},
+                {"codigo":"0632012", "nombre":"Redacción de Informes Técnicos","requisitos":["0632612"]},
+                {"codigo":"0632042", "nombre":"Inglés Instrumental IV","requisitos":["0632032"]},
+                {"codigo":"0632324", "nombre":"Mecánica para Ingenieros","requisitos":["0051824"]},
+                {"codigo":"0632724", "nombre":"Geología General y Laboratorio","requisitos":["0632612","0082824"]}
+            ]
+        },
+        {
+            "semestre":"semestre 5",
+            "materias":[
+                {"codigo":"0083813", "nombre":"Métodos Numéricos para Ingenieros","requisitos":["0082824","0082833"]},
+                {"codigo":"0613553", "nombre":"Mecánica de los Materiales","requisitos":["0632324"]},
+                {"codigo":"0613753", "nombre":"Termodinámica","requisitos":["0082814","0101824"]},
+                {"codigo":"0623314", "nombre":"Estadística para Ingenieros","requisitos":["0082833"]},
+                {"codigo":"0633113", "nombre":"Propiedades de la Roca y de los Fluidos","requisitos":["0082824","0632724"]}
+            ]
+        },
+        {
+            "semestre":"semestre 6",
+            "materias":[
+                {"codigo":"0633121", "nombre":"Laboratorio de Yacimiento","requisitos":["0633113"]},
+                {"codigo":"0633123", "nombre":"Yacimiento I","requisitos":["0083813","0633113"]},
+                {"codigo":"0633423", "nombre":"Gasotecnia","requisitos":["0613753"]},
+                {"codigo":"0633624", "nombre":"Geología Estructural","requisitos":["0633113"]},
+                {"codigo":"0633663", "nombre":"Computación y Modelos Matemáticos","requisitos":["0083813"]},
+                {"codigo":"0633824", "nombre":"Fenómeno de Transporte Aplicado","requisitos":["0613753"]}
+            ]
+        },
+        {
+            "semestre":"semestre 7",
+            "materias":[
+                {"codigo":"0634123", "nombre":"Yacimiento II","requisitos":["0633123"]},
+                {"codigo":"0634314", "nombre":"Perforación","requisitos":["0633624","0633824"]},
+                {"codigo":"0634623", "nombre":"Evaluación Económica de Proyectos","requisitos":["0623314"]},
+                {"codigo":"0634734", "nombre":"Registro de Pozos","requisitos":["0633624"]}
+            ]
+        },
+        {
+            "semestre":"semestre 8",
+            "materias":[
+                {"codigo":"0634143", "nombre":"Prueba de Pozos","requisitos":["0634123"]},
+                {"codigo":"0634223", "nombre":"Producción de Hidrocarburos","requisitos":["0633123"]},
+                {"codigo":"0634322", "nombre":"Laboratorio de Perforación","requisitos":["0634314"]},
+                {"codigo":"0634323", "nombre":"Completación y Reacondicionamiento de Pozos","requisitos":["0634314"]},
+                {"codigo":"0634553", "nombre":"Simulación de Yacimientos","requisitos":["0634123"]},
+                {"codigo":"0634612", "nombre":"Seminario y Proyecto de Investigación","requisitos":["0633121","0634734"]}
+            ]
+        },
+        {
+            "semestre":"semestre 9",
+            "materias":[
+                {"codigo":"0634123", "nombre":"Yacimiento II","requisitos":["0633123"]},
+                {"codigo":"0634314", "nombre":"Perforación","requisitos":["0633624","0633824"]},
+                {"codigo":"0633423", "nombre":"Evaluación Económica de Proyectos","requisitos":["0623314"]},
+                {"codigo":"0634734", "nombre":"Registro de Pozos","requisitos":["0633624"]}
+            ]
+        },
+        {
+            "semestre":"semestre 10",
+            "materias":[
+                {"codigo":"0634123", "nombre":"Yacimiento II","requisitos":["0633123"]},
+                {"codigo":"0634314", "nombre":"Perforación","requisitos":["0633624","0633824"]},
+                {"codigo":"0633423", "nombre":"Evaluación Económica de Proyectos","requisitos":["0623314"]},
+                {"codigo":"0634734", "nombre":"Registro de Pozos","requisitos":["0633624"]}
+            ]
+        }
+        
+    ]
+}
