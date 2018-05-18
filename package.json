@@ -2,9 +2,10 @@
   "name": "express-react-redux-starter",
   "version": "1.0.0",
   "description": "Starter for Express, React, Redux, SCSS applications",
-  "main": "server.js",
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./app.js"
   },
   "lint-staged": {
     "src/app/*.{js, jsx, css}": [
