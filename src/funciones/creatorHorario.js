@@ -8,7 +8,7 @@ const creatorHorario = (data, materias) => {
       };
     }
     let r = materias.filter((o,i) => n.some(obj => obj == i)).map(obj => obj.nombre)
-    alert(`${r.length>1?'las materias':'la materia'} ${r.join(',')} no ${r.length>1?'fueron ofertadas':'fue ofertada'} este semestre`)
+    alert(`${r.length>1?'las materias':'la materia'} ${r.join(',')} no ${r.length>1?'fueron ofertadas':'fue ofertada'} este semestre!`)
     return [];
   }
   var x = data;

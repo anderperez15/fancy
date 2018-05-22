@@ -2,36 +2,43 @@ import React from 'react';
 import { findDOMNode } from 'react-dom'
 import {Form, Button, Panel, Table, Glyphicon} from 'react-bootstrap';
 
+let styles = {
+    height: "500px",
+    overflow: "auto",
+    scrollbarBaseColor:"#ffeaff",
+    paddinButtom:"10px"
+}
+
 class Option extends React.Component {
     constructor(props){
         super(props);
         this.select = this.select.bind(this);
-        
+
         this.state = {
             seme: 0
         };
     };
-    
+
     select(e){
         e.preventDefault();
         const {select} = this.refs;
         this.setState({seme:select.value})
     }
-    
+
     render() {
-        return(<div>
+        return(<div style={styles}>
             {this.props.carrera.semestres.length>1?
-            <Panel> 
+            <Panel>
                 <Panel.Heading>
                     <Form onChange={this.select}>
                         <div className="form-group">
                             <select className="form-control" ref="select" >
                                 {
-                                    this.props.carrera.semestres.map((obj,i) => 
+                                    this.props.carrera.semestres.map((obj,i) =>
                                         <option key={i+"a"} value={i}>{ obj.semestre }</option>
                                     )
                                 }
-                            </select>   
+                            </select>
                         </div>
                     </Form>
                 </Panel.Heading>

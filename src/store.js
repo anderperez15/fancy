@@ -1,6 +1,5 @@
 import { createStore, applyMiddleware, combineReducers } from 'redux';
 import thunk from 'redux-thunk';
-import { routerReducer } from 'react-router-redux';
 import retroCompatibilidad from './funciones/retroCompatibilidad';
 import creatorHorario from './funciones/creatorHorario';
 
@@ -10,8 +9,9 @@ const initialstate = {
     carrera:{
         semestres:[]
     },
-    resultados:[]
+    data:[]
 };
+
 
 const reducer = (state  = initialstate, action) => {
     switch (action.type){
@@ -54,7 +54,8 @@ const reducer = (state  = initialstate, action) => {
         case "Materias_a_inscribir":
             return {
                 ...state,
-                materias: creatorHorario(action.data,state.cart)
+                materias: creatorHorario(action.data,state.cart),
+                data: action.data
             };
     }
     return state;
@@ -67,6 +68,6 @@ const logger = ({ getState, dispatch }) => next => action => {
     return result;
 };
 
-const store = createStore(combineReducers({horario:reducer, routing: routerReducer}), applyMiddleware(thunk, logger) );
+const store = createStore(reducer, applyMiddleware(thunk, logger) );
 
 export default store;

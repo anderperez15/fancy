@@ -1,15 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Form, Navbar, Grid, Row, Col, Button} from 'react-bootstrap';
+import {Form, Nav, NavItem, Navbar,FormControl, Grid, Row, Col, Button} from 'react-bootstrap';
 import {addAsign, removeAsign, loadAsign} from './actionCreators';
 import Option from './components/option';
 import TablaAsign from './components/tablaAsign';
 import { connect } from 'react-redux';
 import Horario from './horario.js';
 
-const style = {
-  marginTop:"60px"
-};
 const t = {
   bsStyle:"danger",
   glyph:"trash",
@@ -18,18 +15,22 @@ const t = {
 const App = props =>{
   return(
     <div>
-      <Navbar inverse fixedTop>
+      {props.horarios.length == 0?
+      <div>
+      <Navbar inverse staticTop>
         <Navbar.Header>
           <Navbar.Brand>
-            <a href="#">Petróleo</a>
+            Generador de Horarios:
           </Navbar.Brand>
-          <Navbar.Brand>
-            <a href="#">Sistemas</a>
-          </Navbar.Brand>
+          <Navbar.Form pullLeft>
+            <FormControl componentClass="select" placeholder="select">
+              <option value="petroleo.json">Petróleo</option>
+              <option value="sistemas.json">Sistemas</option>
+            </FormControl>
+          </Navbar.Form>
         </Navbar.Header>
       </Navbar>
-      {props.resultados.length==0?
-        <Grid style={style} fluid={false}>
+        <Grid fluid={false}>
           <Row>
             <Col sm = {6}>
               <Option carrera={props.carrera} addAsign = {props.addAsign} />
@@ -40,11 +41,10 @@ const App = props =>{
           </Row>
 				{props.cart.length>1?
           <Button className="btn btn-success btn-block"  onClick = {
-            ()=>props.goHorario(props.cart.map(obj=> obj.codigo))}>Enviar</Button>
-          :null
+            ()=>props.goHorario(props.cart.map(obj=> obj.codigo))}>Enviar</Button>:null
         }
-        </Grid>:
-        null
+        </Grid></div>:
+        <Horario horarios={props.horarios} data={props.data} />
       }
     </div>
   )
@@ -52,9 +52,10 @@ const App = props =>{
 
 const mapStateToProps = state => {
   return {
-    carrera: state.horario.carrera ,
-    cart: state.horario.cart,
-    resultados: state.horario.resultados
+    carrera: state.carrera ,
+    cart: state.cart,
+    horarios: state.materias,
+    data: state.data
   }
 };
 

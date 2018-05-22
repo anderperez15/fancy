@@ -1,9 +1,0 @@
-import React from 'react';
-
-const Horario = () => {
-    return (
-        <p>wao</p>
-    );
-};
-
-export default  Horario;
