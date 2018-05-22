@@ -12,10 +12,10 @@ const history = syncHistoryWithStore(browserHistory, store);
 store.dispatch(loadAsign({url:"/petroleo.json",type:"Load_asignaturas"}))
 render(
     <Provider store={store}>
-        <Router history={history}>
-      <Route path="/" component={App} >
-      </Route>
-    </Router>
+      <Router history={history}>
+        <Route path="/" component={App} >
+        </Route>
+      </Router>
     </Provider>
     , document.getElementById('container')
 );

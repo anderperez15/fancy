@@ -3,7 +3,7 @@ import {Button, Panel, Table, Glyphicon} from 'react-bootstrap';
 
 const TablaAsign = ({asignaturas, removeAsign}) => {
     return(
-        <Panel header="Lista de Materias">
+        <Panel>
             <Table fill>
                 <tbody>
                     {asignaturas.map((product, i) =>

@@ -22135,13 +22135,13 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var history = (0, _reactRouterRedux.syncHistoryWithStore)(_reactRouter.browserHistory, _store2.default);
 _store2.default.dispatch((0, _actionCreators.loadAsign)({ url: "/petroleo.json", type: "Load_asignaturas" }));
 (0, _reactDom.render)(_react2.default.createElement(
-    _reactRedux.Provider,
-    { store: _store2.default },
-    _react2.default.createElement(
-        _reactRouter.Router,
-        { history: history },
-        _react2.default.createElement(_reactRouter.Route, { path: '/', component: _app2.default })
-    )
+  _reactRedux.Provider,
+  { store: _store2.default },
+  _react2.default.createElement(
+    _reactRouter.Router,
+    { history: history },
+    _react2.default.createElement(_reactRouter.Route, { path: '/', component: _app2.default })
+  )
 ), document.getElementById('container'));
 
 /***/ }),
@@ -33938,9 +33938,9 @@ var _retroCompatibilidad = __webpack_require__(369);
 
 var _retroCompatibilidad2 = _interopRequireDefault(_retroCompatibilidad);
 
-var _newCreatorHorario = __webpack_require__(370);
+var _creatorHorario = __webpack_require__(370);
 
-var _newCreatorHorario2 = _interopRequireDefault(_newCreatorHorario);
+var _creatorHorario2 = _interopRequireDefault(_creatorHorario);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -33991,7 +33991,7 @@ var reducer = function reducer() {
             });
         case "Materias_a_inscribir":
             return _extends({}, state, {
-                materias: (0, _newCreatorHorario2.default)(action.data)
+                materias: (0, _creatorHorario2.default)(action.data, state.cart)
             });
     }
     return state;
@@ -34807,69 +34807,72 @@ function routerMiddleware(history) {
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
-/*Se encarga de verificar si una materia fue
-    añadida o existe una materia requisito
+/*Se encarga de verificar si una materia
+es requisito
+*/
+/* la fuccion a va recorriendo todos los requisitos
+hasta llegar a la raiz de los requisitos
 */
 var a = function a(codigo, pensum, codigos) {
-    var i = [];
-    var materias = pensum.semestres;
+  var i = [];
+  var materias = pensum.semestres;
 
-    var _loop = function _loop(n) {
-        var _loop2 = function _loop2(u) {
-            if (codigo.some(function (cod) {
-                return cod == materias[n].materias[u].codigo && materias[n].materias[u].requisitos.length > 0;
-            })) {
-                i = i.concat(materias[n].materias[u].requisitos);
-            }
-        };
-
-        for (var u = 0; u < materias[n].materias.length; u++) {
-            _loop2(u);
-        }
+  var _loop = function _loop(n) {
+    var _loop2 = function _loop2(u) {
+      if (codigo.some(function (cod) {
+        return cod == materias[n].materias[u].codigo && materias[n].materias[u].requisitos.length > 0;
+      })) {
+        i = i.concat(materias[n].materias[u].requisitos);
+      }
     };
 
-    for (var n = 0; n < materias.length; n++) {
-        _loop(n);
+    for (var u = 0; u < materias[n].materias.length; u++) {
+      _loop2(u);
     }
-    codigos = codigos.concat(i);
-    if (i.length > 0) {
-        return a(i, pensum, codigos);
-    }
-    return codigos;
+  };
+
+  for (var n = 0; n < materias.length; n++) {
+    _loop(n);
+  }
+  codigos = codigos.concat(i);
+  if (i.length > 0) {
+    return a(i, pensum, codigos);
+  }
+  return codigos;
 };
 
 var retroCompatibilidad = function retroCompatibilidad(materia_e) {
-    var materias_cart = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
-    var pensum = arguments[2];
+  var materias_cart = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
+  var pensum = arguments[2];
 
-    var codigos = void 0;
-    if (!materias_cart.length) {
-        return false;
-    }
-    var code = materias_cart.map(function (obj) {
-        return obj.codigo;
+  var codigos = void 0;
+  if (!materias_cart.length) {
+    return false;
+  }
+  var code = materias_cart.map(function (obj) {
+    return obj.codigo;
+  });
+  var ok = a(code, pensum, []);
+  if (materia_e.requisitos.length) {
+    codigos = a(materia_e.requisitos, pensum, []);
+    codigos = codigos.concat(materia_e.requisitos);
+  } else {
+    codigos = [];
+  }
+  codigos.push(materia_e.codigo);
+  if (codigos.some(function (cod) {
+    return materias_cart.some(function (mc) {
+      return mc.codigo == cod;
     });
-    var ok = a(code, pensum, []);
-    if (materia_e.requisitos.length) {
-        codigos = a(materia_e.requisitos, pensum, []);
-        codigos = codigos.concat(materia_e.requisitos);
-    } else {
-        codigos = [];
-    }
-    codigos.push(materia_e.codigo);
-    if (codigos.some(function (cod) {
-        return materias_cart.some(function (mc) {
-            return mc.codigo == cod;
-        });
-    }) || ok.some(function (obj) {
-        return obj == materia_e.codigo;
-    })) {
-        return true;
-    } else {
-        return false;
-    }
+  }) || ok.some(function (obj) {
+    return obj == materia_e.codigo;
+  })) {
+    return true;
+  } else {
+    return false;
+  }
 };
 
 exports.default = retroCompatibilidad;
@@ -34882,62 +34885,85 @@ exports.default = retroCompatibilidad;
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
-var newCreatorHorario = function newCreatorHorario(data) {
-    var x = data;
-    var continuar = void 0;
-    var respuesta = [];
-    var p = x.length;
-    var alfa = [];
-    var c = 1;
-    var ok = void 0;
-    for (var sos = 0; sos < p; sos++) {
-        c *= x[sos].opciones.length;
-        alfa[sos] = 0;
-    };
-    for (var l = 0; l < c; l++) {
-        continuar = true;
-        for (var numb = 0; numb < p - 1; numb++) {
-            for (var go = 1; go < p; go++) {
-                if (numb == go) {
-                    continue;
-                };
-                for (var n = 0; n < x[numb].opciones[alfa[numb]].e_t.length; n++) {
-                    for (var s = 0; s < x[go].opciones[alfa[go]].e_t.length; s++) {
-                        if (x[numb].opciones[alfa[numb]].e_t[n].dia == x[go].opciones[alfa[go]].e_t[s].dia) {
-                            if (x[numb].opciones[alfa[numb]].e_t[n].he <= x[go].opciones[alfa[go]].e_t[s].he && x[go].opciones[alfa[go]].e_t[s].he <= x[numb].opciones[alfa[numb]].e_t[n].hs || x[numb].opciones[alfa[numb]].e_t[n].he >= x[go].opciones[alfa[go]].e_t[s].he && x[numb].opciones[alfa[numb]].e_t[n].he <= x[go].opciones[alfa[go]].e_t[s].hs) {
-                                continuar = false;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        if (continuar) {
-            var h = new Array();
-            for (var u = 0; u < p; u++) {
-                h.push({ e_t: x[u].opciones[alfa[u]].e_t, seccion: x[u].opciones.seccion, profesor: x[u].profesor });
-            }
-            respuesta.push(h);
-        }
-        ok = true;
-        for (var y = p - 1; y > 0; y--) {
-            if (ok) {
-                alfa[p - 1] += 1;
-            }
-            if (alfa[y] >= x[y].length) {
-                alfa[y] = 0;
-                alfa[y - 1] += 1;
-            }
-            ok = false;
-        }
-        console.log(respuesta);
+//Se encaraga de crear el horario
+var creatorHorario = function creatorHorario(data, materias) {
+  if (data.some(function (obj) {
+    return obj.length == 0;
+  })) {
+    var _n = [];
+    for (var _x = 0; _x < data.length; _x++) {
+      if (data[_x].length == 0) {
+        _n.push(_x);
+      };
     }
-    return respuesta;
+    var r = materias.filter(function (o, i) {
+      return _n.some(function (obj) {
+        return obj == i;
+      });
+    }).map(function (obj) {
+      return obj.nombre;
+    });
+    alert((r.length > 1 ? 'las materias' : 'la materia') + ' ' + r.join(',') + ' no ' + (r.length > 1 ? 'fueron ofertadas' : 'fue ofertada') + ' este semestre');
+    return [];
+  }
+  var x = data;
+  var continuar;
+  var respuesta = [];
+  var p = x.length;
+  var alfa = [];
+  var c = 1;
+  var ok;
+  if (x != false) {
+    for (var sos = 0; sos < p; sos++) {
+      c *= x[sos].length;
+    }
+    for (var z = 0; z < p; z++) {
+      alfa[z] = 0;
+    }
+    for (var l = 0; l < c; l++) {
+      continuar = true;
+      for (var numb = 0; numb < p - 1; numb++) {
+        for (var go = 1; go < p; go++) {
+          if (numb == go) {
+            continue;
+          }
+          for (var n = 0; n < x[numb][alfa[numb]].he.length; n++) {
+            for (var s = 0; s < x[go][alfa[go]].he.length; s++) {
+              if (x[numb][alfa[numb]].dias[n] == x[go][alfa[go]].dias[s]) {
+                if (x[numb][alfa[numb]].he[n] <= x[go][alfa[go]].he[s] && x[go][alfa[go]].he[s] <= x[numb][alfa[numb]].hs[n] || x[numb][alfa[numb]].he[n] >= x[go][alfa[go]].he[s] && x[numb][alfa[numb]].he[n] <= x[go][alfa[go]].hs[s]) {
+                  continuar = false;
+                }
+              }
+            }
+          }
+        }
+      }
+      if (continuar) {
+        var h = new Array();
+        for (var u = 0; u < p; u++) {
+          h.push(x[u][alfa[u]]);
+        }
+        respuesta.push(h);
+      }
+      ok = true;
+      for (var y = p - 1; y > 0; y--) {
+        if (ok) {
+          alfa[p - 1] += 1;
+        }
+        if (alfa[y] >= x[y].length) {
+          alfa[y] = 0;
+          alfa[y - 1] += 1;
+        }
+        ok = false;
+      }
+    }
+  }
+  return respuesta;
 };
 
-exports.default = newCreatorHorario;
+exports.default = creatorHorario;
 
 /***/ }),
 /* 371 */
@@ -35907,7 +35933,7 @@ module.exports = isObjectLike;
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 
 var _react = __webpack_require__(1);
@@ -35932,100 +35958,100 @@ var _tablaAsign2 = _interopRequireDefault(_tablaAsign);
 
 var _reactRedux = __webpack_require__(189);
 
+var _horario = __webpack_require__(539);
+
+var _horario2 = _interopRequireDefault(_horario);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var style = {
-    marginTop: "60px"
+  marginTop: "60px"
 };
 var t = {
-    bsStyle: "danger",
-    glyph: "trash"
+  bsStyle: "danger",
+  glyph: "trash"
 };
 
 var App = function App(props) {
-    return _react2.default.createElement(
-        'div',
+  return _react2.default.createElement(
+    'div',
+    null,
+    _react2.default.createElement(
+      _reactBootstrap.Navbar,
+      { inverse: true, fixedTop: true },
+      _react2.default.createElement(
+        _reactBootstrap.Navbar.Header,
         null,
         _react2.default.createElement(
-            _reactBootstrap.Navbar,
-            { inverse: true, fixedTop: true },
-            _react2.default.createElement(
-                _reactBootstrap.Navbar.Header,
-                null,
-                _react2.default.createElement(
-                    _reactBootstrap.Navbar.Brand,
-                    null,
-                    _react2.default.createElement(
-                        'a',
-                        { href: '#' },
-                        'Petr\xF3leo'
-                    )
-                ),
-                _react2.default.createElement(
-                    _reactBootstrap.Navbar.Brand,
-                    null,
-                    _react2.default.createElement(
-                        'a',
-                        { href: '#' },
-                        'Sistemas'
-                    )
-                )
-            )
-        ),
-        props.resultados.length == 0 ? _react2.default.createElement(
-            _reactBootstrap.Grid,
-            { style: style, fluid: false },
-            _react2.default.createElement(
-                _reactBootstrap.Row,
-                null,
-                _react2.default.createElement(
-                    _reactBootstrap.Col,
-                    { sm: 6 },
-                    _react2.default.createElement(_option2.default, { carrera: props.carrera, addAsign: props.addAsign })
-                ),
-                _react2.default.createElement(
-                    _reactBootstrap.Col,
-                    { sm: 6 },
-                    _react2.default.createElement(_tablaAsign2.default, { asignaturas: props.cart, removeAsign: props.removeAsign })
-                )
-            ),
-            props.cart.length > 2 ? _react2.default.createElement(
-                _reactBootstrap.Button,
-                { className: 'btn btn-success btn-block', onClick: function onClick() {
-                        return props.goHorario(props.cart.map(function (obj) {
-                            return obj.codigo;
-                        }));
-                    } },
-                'Enviar'
-            ) : null
-        ) : _react2.default.createElement(
+          _reactBootstrap.Navbar.Brand,
+          null,
+          _react2.default.createElement(
             'a',
-            null,
-            'ok'
+            { href: '#' },
+            'Petr\xF3leo'
+          )
+        ),
+        _react2.default.createElement(
+          _reactBootstrap.Navbar.Brand,
+          null,
+          _react2.default.createElement(
+            'a',
+            { href: '#' },
+            'Sistemas'
+          )
         )
-    );
+      )
+    ),
+    props.resultados.length == 0 ? _react2.default.createElement(
+      _reactBootstrap.Grid,
+      { style: style, fluid: false },
+      _react2.default.createElement(
+        _reactBootstrap.Row,
+        null,
+        _react2.default.createElement(
+          _reactBootstrap.Col,
+          { sm: 6 },
+          _react2.default.createElement(_option2.default, { carrera: props.carrera, addAsign: props.addAsign })
+        ),
+        _react2.default.createElement(
+          _reactBootstrap.Col,
+          { sm: 6 },
+          _react2.default.createElement(_tablaAsign2.default, { asignaturas: props.cart, removeAsign: props.removeAsign })
+        )
+      ),
+      props.cart.length > 1 ? _react2.default.createElement(
+        _reactBootstrap.Button,
+        { className: 'btn btn-success btn-block', onClick: function onClick() {
+            return props.goHorario(props.cart.map(function (obj) {
+              return obj.codigo;
+            }));
+          } },
+        'Enviar'
+      ) : null
+    ) : null
+  );
 };
 
 var mapStateToProps = function mapStateToProps(state) {
-    return {
-        carrera: state.horario.carrera,
-        cart: state.horario.cart,
-        resultados: state.horario.resultados
-    };
+  return {
+    carrera: state.horario.carrera,
+    cart: state.horario.cart,
+    resultados: state.horario.resultados
+  };
 };
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
-    return {
-        goHorario: function goHorario(data) {
-            dispatch((0, _actionCreators.loadAsign)({ url: "http://localhost:8080/horarios/" + JSON.stringify(data), type: "Materias_a_inscribir" }));
-        },
-        removeAsign: function removeAsign(product) {
-            dispatch((0, _actionCreators.removeAsign)(product));
-        },
-        addAsign: function addAsign(product) {
-            dispatch((0, _actionCreators.addAsign)(product));
-        }
-    };
+  return {
+    goHorario: function goHorario(data) {
+      dispatch((0, _actionCreators.loadAsign)({ url: "/horarios/" + JSON.stringify(data), type: "Materias_a_inscribir" }));
+    },
+    removeAsign: function removeAsign(product) {
+      dispatch((0, _actionCreators.removeAsign)(product));
+    },
+    addAsign: function addAsign(product) {
+      dispatch((0, _actionCreators.addAsign)(product));
+    }
+  };
 };
 
 exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(App);
@@ -57639,7 +57665,7 @@ var TablaAsign = function TablaAsign(_ref) {
 
     return _react2.default.createElement(
         _reactBootstrap.Panel,
-        { header: 'Lista de Materias' },
+        null,
         _react2.default.createElement(
             _reactBootstrap.Table,
             { fill: true },
@@ -57701,21 +57727,35 @@ exports.default = TablaAsign;
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 
 var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
+var _reactBootstrap = __webpack_require__(116);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var Horario = function Horario() {
-    return _react2.default.createElement(
-        'p',
+var Horario = function Horario(props) {
+  return _react2.default.createElement(
+    'div',
+    null,
+    _react2.default.createElement(
+      _reactBootstrap.Navbar,
+      { inverse: true, fixedTop: true },
+      _react2.default.createElement(
+        _reactBootstrap.Navbar.Header,
         null,
-        'wao Tenemos orejas'
-    );
+        _react2.default.createElement(
+          _reactBootstrap.Navbar.Brand,
+          null,
+          'Un Paso mas:'
+        )
+      )
+    )
+  );
 };
 
 exports.default = Horario;

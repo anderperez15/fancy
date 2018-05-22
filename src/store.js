@@ -2,7 +2,7 @@ import { createStore, applyMiddleware, combineReducers } from 'redux';
 import thunk from 'redux-thunk';
 import { routerReducer } from 'react-router-redux';
 import retroCompatibilidad from './funciones/retroCompatibilidad';
-import newCreatorHorario from './funciones/newCreatorHorario';
+import creatorHorario from './funciones/creatorHorario';
 
 const initialstate = {
     cart:[],
@@ -38,13 +38,13 @@ const reducer = (state  = initialstate, action) => {
                 ...state,
                 cart: state.cart.concat(action.product)
             };
-        
+
         case "Remove_Asign":
             return {
                 ...state,
                 cart: state.cart.filter(asign => asign.codigo != action.product.codigo)
             };
-          
+
         case "Load_asignaturas":
             console.log(action.type)
             return {
@@ -54,7 +54,7 @@ const reducer = (state  = initialstate, action) => {
         case "Materias_a_inscribir":
             return {
                 ...state,
-                materias: newCreatorHorario(action.data)
+                materias: creatorHorario(action.data,state.cart)
             };
     }
     return state;
