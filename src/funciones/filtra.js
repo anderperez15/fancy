@@ -1,7 +1,7 @@
 const dia = [
   'Lun',
   'Mar',
-  'Mier',
+  'Mie',
   'Jue',
   'Vie'
 ]
