@@ -1,6 +1,6 @@
 var mysql = require('mysql');
 /*
-En caso de descarga este proyecto,
+En caso de descargar este proyecto,
 es necesario que modifique los
 parametros de conecion a la bases
 de datos.
