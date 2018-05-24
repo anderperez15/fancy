@@ -46,7 +46,6 @@ const reducer = (state  = initialstate, action) => {
             };
 
         case "Load_asignaturas":
-            console.log(action.type)
             return {
                 ...state,
                 carrera: action.data
@@ -57,6 +56,12 @@ const reducer = (state  = initialstate, action) => {
                 materias: creatorHorario(action.data,state.cart),
                 data: action.data
             };
+        case "regresar":
+            return{
+                ...state,
+                materias:[],
+                data:[]
+            }
     }
     return state;
 };

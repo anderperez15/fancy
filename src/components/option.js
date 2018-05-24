@@ -3,7 +3,7 @@ import { findDOMNode } from 'react-dom'
 import {Form, Button, Panel, Table, Glyphicon} from 'react-bootstrap';
 
 let styles = {
-    height: "500px",
+    maxHeight: "500px",
     overflow: "auto",
     scrollbarBaseColor:"#ffeaff",
     paddinButtom:"10px"

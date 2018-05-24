@@ -1,7 +1,16 @@
-
 block content
-  script(src ='/socket.io/socket.io.js')
   meta(name="viewport", content="width=device-width, initial-scale=1.0")
+  link(href='/css/preloader.css', rel="stylesheet", type="text/css")
+  script.
+    window.onload = function(){
+      var contenedor = document.getElementById('contenedor_carga');
+      contenedor.style.visibility = "hidden";
+      contenedor.style.opacity =  "0";
+    }
+  div(id = "contenedor_carga")
+    div(id = "carga")
+    
   div(id = 'container')
   script(src = '/javascripts/ander.js')
   link(href='/css/bootstrap.min.css', rel="stylesheet", type="text/css")
+

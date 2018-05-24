@@ -6,51 +6,65 @@ import Option from './components/option';
 import TablaAsign from './components/tablaAsign';
 import { connect } from 'react-redux';
 import Horario from './horario.js';
+import store from './store';
 
 const t = {
   bsStyle:"danger",
   glyph:"trash",
 }
 
-const App = props =>{
-  return(
-    <div>
-      {props.horarios.length == 0?
+class App extends React.Component{
+  constructor(props){
+    super(props);
+    this.cambiar = this.cambiar.bind(this);
+  }
+  cambiar(){
+    let x = this.refs.selc.value;
+    let url = "/"+x;
+    
+    store.dispatch(loadAsign({url:url,type:"Load_asignaturas"}))
+  }
+  render(){
+    return(
       <div>
-      <Navbar inverse staticTop>
-        <Navbar.Header>
-          <Navbar.Brand>
-            Generador de Horarios:
-          </Navbar.Brand>
-          <Navbar.Form pullLeft>
-            <FormControl componentClass="select" placeholder="select">
-              <option value="petroleo.json">Petróleo</option>
-              <option value="sistemas.json">Sistemas</option>
-            </FormControl>
-          </Navbar.Form>
-        </Navbar.Header>
-      </Navbar>
-        <Grid fluid={false}>
-          <Row>
-            <Col sm = {6}>
-              <Option carrera={props.carrera} addAsign = {props.addAsign} />
-            </Col>
-            <Col sm = {6}>
-              <TablaAsign asignaturas={props.cart} removeAsign = {props.removeAsign} />
-            </Col>
-          </Row>
-				{props.cart.length>1?
-          <Button className="btn btn-success btn-block"  onClick = {
-            ()=>props.goHorario(props.cart.map(obj=> obj.codigo))}>Enviar</Button>:null
+        {this.props.horarios.length == 0?
+        <div>
+        <Navbar inverse staticTop>
+          <Navbar.Header>
+            <Navbar.Brand>
+              Generador de Horarios:
+            </Navbar.Brand>
+            <Navbar.Form pullLeft>
+              <form onChange={this.cambiar}>
+                <select className="form-control" ref="selc" placeholder="select">
+                  <option value="petroleo.json" >Petróleo</option>
+               </select>
+              </form>
+            </Navbar.Form>
+          </Navbar.Header>
+        </Navbar>
+          <Grid fluid={false}>
+            <Row>
+              <Col sm = {6}>
+                <Option carrera={this.props.carrera} addAsign = {this.props.addAsign} />
+              </Col>
+              <Col sm = {6}>
+                <TablaAsign asignaturas={this.props.cart} removeAsign = {this.props.removeAsign} />
+              </Col>
+            </Row>
+				  {this.props.cart.length>1?
+            <Button className="btn btn-success btn-block"  onClick = {
+              ()=>this.props.goHorario(this.props.cart.map(obj=> obj.codigo))}>Enviar</Button>:null
+          }
+          </Grid></div>:
+          <Horario horarios={this.props.horarios} data={this.props.data} />
         }
-        </Grid></div>:
-        <Horario horarios={props.horarios} data={props.data} />
-      }
-    </div>
-  )
+      </div>
+    )
+  }
 };
 
-const mapStateToProps = state => {
+const mapStateToprops = state => {
   return {
     carrera: state.carrera ,
     cart: state.cart,
@@ -59,7 +73,7 @@ const mapStateToProps = state => {
   }
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToprops = dispatch => {
   return {
     goHorario(data){
       dispatch(loadAsign({url:"/horarios/"+JSON.stringify(data),type:"Materias_a_inscribir"}));
@@ -73,4 +87,4 @@ const mapDispatchToProps = dispatch => {
   }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToprops, mapDispatchToprops)(App);

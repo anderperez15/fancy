@@ -1,0 +1,106 @@
+{
+    "carrera":"Ing Sistemas",
+    "semestres":[
+        {
+            "semestre":"Semestre 1",
+            "materias":[
+                {"codigo":"0021111", "nombre":"Extraacadémica","requisitos":[]},
+                {"codigo":"0061013", "nombre":"Comprensión y expresión Lingüística I","requisitos":[]},
+                {"codigo":"0071823", "nombre":"Inglés Instrumental","requisitos":[]},
+                {"codigo":"0081814", "nombre":"Matemáticas I","requisitos":[]},
+                {"codigo":"0091012", "nombre":"Desarrollo de Destrezas para el Aprendizaje","requisitos":[]},
+                {"codigo":"0101214", "nombre":"Química I","requisitos":[]},
+                {"codigo":"0151111", "nombre":"Extraacadémica (Deportiva)","requisitos":[]}
+            ]
+        },
+        {
+            "semestre":"Semestre 2",
+            "materias":[
+                {"codigo":"0051324", "nombre":"Física I","requisitos":["0081814"]},
+                {"codigo":"0061023", "nombre":"Comprensión y Expresión Lingüística II","requisitos":["0061013"]},
+                {"codigo":"0071121", "nombre":"Inglés Técnico I","requisitos":["0071823"]},
+                {"codigo":"0081824", "nombre":"Matemáticas II","requisitos":["0081814"]},
+                {"codigo":"0721162", "nombre":"Intr. a la Lógica Formal y Algoritmos","requisitos":[]}
+            ]
+        },
+        {
+            "semestre":"Semestre 3",
+            "materias":[
+                {"codigo":"0052131", "nombre":"Laboratorio I de Física","requisitos":["0051324"]},
+                {"codigo":"0052134", "nombre":"Física II","requisitos":["0051324"]},
+                {"codigo":"0082814", "nombre":"Matemáticas III","requisitos":["0081824"]},
+                {"codigo":"0712642", "nombre":"Introducción a la Ingeniería de Sistemas","requisitos":[]},
+                {"codigo":"0722103", "nombre":"Programación Orientada a Objetos","requisitos":["0081824","0721162"]},
+                {"codigo":"0722111", "nombre":"Taller de Program. Orientada a Objetos","requisitos":["0721162"]},
+            ]
+        },
+        {
+            "semestre":"Semestre 4",
+            "materias":[
+                {"codigo":"0073023", "nombre":"Metodología de la Investigación","requisitos":[]},
+                {"codigo":"0082824", "nombre":"Matemáticas IV","requisitos":["0082814"]},
+                {"codigo":"0623313", "nombre":"Estadística I","requisitos":["0082814"]},
+                {"codigo":"0712142", "nombre":"Introducción a la Economía","requisitos":[]},
+                {"codigo":"0722123", "nombre":"Objetos y Abstracción de Datos","requisitos":["0722103","0722111"]},
+                {"codigo":"0722131", "nombre":"Taller de Objet. y Abstracción de Datos","requisitos":["0722111"]}
+            ]
+        },
+        {
+            "semestre":"Semestre 5",
+            "materias":[
+                {"codigo":"0624622", "nombre":"Estadística II","requisitos":["0623313"]},
+                {"codigo":"0713122", "nombre":"Inferencia y Diseño de Experimentos","requisitos":["0623313"]},
+                {"codigo":"0713172", "nombre":"Sistemas de Costo","requisitos":["0712142"]},
+                {"codigo":"0713463", "nombre":"Circuitos y Sistemas","requisitos":["0052134","0082824"]},
+                {"codigo":"0713632", "nombre":"Teoría de Sistemas","requisitos":["0712642"]},
+                {"codigo":"0713643", "nombre":"Sistemas de Operación","requisitos":["0722123"]},
+                {"codigo":"0723913", "nombre":"Métodos Numéricos","requisitos":["0082824","0722103"]}
+            ]
+        },
+        {
+            "semestre":"Semestre 6",
+            "materias":[
+                {"codigo":"0713113", "nombre":"Economía de Empresas","requisitos":["0713172"]},
+                {"codigo":"0713622", "nombre":"Admón. de Stmas. De Base de Datos","requisitos":["0713643"]},
+                {"codigo":"0713633", "nombre":"Enfoque Sistémico","requisitos":["0713632"]},
+                {"codigo":"0713653", "nombre":"Análisis de Decisiones","requisitos":["0713122"]},
+                {"codigo":"0713663", "nombre":"Optimización de Operaciones","requisitos":["0723913"]},
+                {"codigo":"0723533", "nombre":"Electrónica","requisitos":["0713463"]}
+            ]
+        },
+        {
+            "semestre":"Semestre 7",
+            "materias":[
+                {"codigo":"0714153", "nombre":"Prepar., Eval. y Cntrol de Proyectos","requisitos":["0713113"]},
+                {"codigo":"0714323", "nombre":"Anál. y Diseño de Stms.de Información","requisitos":["0713622"]},
+                {"codigo":"0714633", "nombre":"Modelos de Operaciones I","requisitos":["0713663"]},
+                {"codigo":"0714643", "nombre":"Sistemas Dinámicos","requisitos":["0723533"]},
+                {"codigo":"0724641", "nombre":"Laboratorio de Circuitos y Electrónica","requisitos":["0723533"]}
+            ]
+        },
+        {
+            "semestre":"Semestre 8",
+            "materias":[
+                {"codigo":"0625613", "nombre":"Administración Financiera de Empresas","requisitos":["0713113"]},
+                {"codigo":"0714123", "nombre":"Gestión Empresarial I","requisitos":["0714153"]},
+                {"codigo":"0714133", "nombre":"Modelos de Operaciones II","requisitos":["0714633"]},
+                {"codigo":"0714612", "nombre":"Aplicación y Audit de Stmas. de Inform.","requisitos":["0714323"]},
+                {"codigo":"0714642", "nombre":"Sistemas de Comunicacion Industrial","requisitos":["0713622"]}
+            ]
+        },
+        {
+            "semestre":"Semestre 9",
+            "materias":[
+                {"codigo":"0625822", "nombre":"Leyes y Deontología","requisitos":[]},
+                {"codigo":"0715112", "nombre":"Planificación Estratégica","requisitos":["0714123"]}
+            ]
+        },
+        {
+            "semestre":"Semestre 10",
+            "materias":[
+                {"codigo":"0715116", "nombre":"Trabajo de Grado","requisitos":["0714133","0715112"]},
+                {"codigo":"0214100", "nombre":"Servicio Comunitario","requisitos":[]}
+            ]
+        }
+    ]
+}
