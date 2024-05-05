@@ -11,29 +11,29 @@ const creatorHorario = (data, materias) => {
     alert(`${r.length>1?'las materias':'la materia'} ${r.join(',')} no ${r.length>1?'fueron ofertadas':'fue ofertada'} este semestre!`)
     return [];
   }
-  var x = data;
-  var continuar;
-  var respuesta = [];
-  var p = x.length;
-  var alfa = [];
-  var c = 1;
-  var ok;
+  let x = data;
+  let continuar;
+  let respuesta = [];
+  let p = x.length;
+  let alfa = [];
+  let c = 1;
+  let ok;
   if(x != false){
-    for (var sos = 0 ; sos < p ; sos++){
+    for (let sos = 0 ; sos < p ; sos++){
       c *= x[sos].length;
     }
-    for (var z = 0; z < p ; z++){
+    for (let z = 0; z < p ; z++){
       alfa[z] = 0;
     }
-    for (var l = 0; l < c; l++){
+    for (let l = 0; l < c; l++){
       continuar = true;
-      for(var numb = 0; numb < (p - 1) ; numb++){
-        for(var go = 1 ; go < p ; go++){
+      for(let numb = 0; numb < (p - 1) ; numb++){
+        for(let go = 1 ; go < p ; go++){
           if(numb == go){
             continue;
           }
-          for (var n = 0; n < x[numb][alfa[numb]].he.length ;n++){
-            for (var s = 0; s < x[go][alfa[go]].he.length ;s++){
+          for (let n = 0; n < x[numb][alfa[numb]].he.length ;n++){
+            for (let s = 0; s < x[go][alfa[go]].he.length ;s++){
               if (x[numb][alfa[numb]].dias[n] == x[go][alfa[go]].dias[s]){
                 if (((x[numb][alfa[numb]].he[n] <= x[go][alfa[go]].he[s]) && (x[go][alfa[go]].he[s] <= x[numb][alfa[numb]].hs[n])) || ((x[numb][alfa[numb]].he[n] >= x[go][alfa[go]].he[s]) && (x[numb][alfa[numb]].he[n] <= x[go][alfa[go]].hs[s]))){
                 continuar = false;
@@ -44,14 +44,14 @@ const creatorHorario = (data, materias) => {
         }
       }
       if(continuar){
-        var h = new Array();
-        for (var u = 0; u < p; u++){
+        let h = new Array();
+        for (let u = 0; u < p; u++){
           h.push(x[u][alfa[u]]);
         }
         respuesta.push(h);
       }
       ok = true;
-      for (var y = p - 1; y > 0 ; y--){
+      for (let y = p - 1; y > 0 ; y--){
         if(ok){
           alfa[p - 1] += 1;
         }
